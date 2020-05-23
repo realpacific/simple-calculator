@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'jacoco'
 
 android {
   compileSdkVersion 29
@@ -23,9 +22,9 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
 
-//    debug {
-//      testCoverageEnabled true
-//    }
+    debug {
+      testCoverageEnabled true
+    }
   }
 
 }
@@ -41,56 +40,3 @@ dependencies {
   androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
   androidTestImplementation 'com.kaspersky.android-components:kaspresso:1.1.0'
 }
-
-//
-//jacoco {
-//  toolVersion = "0.8.5"
-//}
-//
-//tasks.withType(Test) {
-//  jacoco.includeNoLocationClasses = true
-//}
-//
-//
-//def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*',
-//                  '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
-//def debugTree = fileTree(dir: "$project.buildDir/tmp/kotlin-classes/debug", excludes: fileFilter)
-//def mainSrc = "$project.projectDir/src/main/java"
-//
-//task jacocoTestReport(type: JacocoReport) {
-//  dependsOn = ['testDebugUnitTest', 'createDebugCoverageReport']
-//  reports {
-//    xml.enabled = false
-//    html.enabled = true
-//  }
-//
-//  sourceDirectories.setFrom(files([mainSrc]))
-//  classDirectories.setFrom(files([debugTree]))
-//  executionData.from = fileTree(dir: project.buildDir, includes: [
-//      'jacoco/testDebugUnitTest.exec',
-//      'outputs/code_coverage/debugAndroidTest/connected/*.ec'
-//  ])
-//}
-//
-//task jacocoTestCoverageVerification(type: JacocoCoverageVerification) {
-//  dependsOn = ['jacocoTestReport']
-//  enabled = true
-//  executionData.from = fileTree(dir: project.buildDir, includes: [
-//      'jacoco/testDebugUnitTest.exec',
-//      'outputs/code_coverage/debugAndroidTest/connected/*.ec'
-//  ])
-//  violationRules {
-//
-//    rule {
-//      element = 'PACKAGE'
-//
-//      limit {
-//        value = 'COVEREDRATIO'
-//        counter = 'LINE'
-//        minimum = 0.6
-//      }
-//    }
-//  }
-//}
-//
-//check.dependsOn jacocoTestCoverageVerification
