@@ -13,7 +13,7 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Print contents in curernt directory
+      - name: Print contents in current directory
         run: ls -la
 
       - name: Run Unit Tests
